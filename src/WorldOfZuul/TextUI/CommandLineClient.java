@@ -8,6 +8,7 @@ package WorldOfZuul.TextUI;
 import WorldOfZuul.Command;
 import WorldOfZuul.Commands;
 import WorldOfZuul.Game;
+import WorldOfZuul.Item;
 
 /**
  *
@@ -56,31 +57,60 @@ public class CommandLineClient {
 
         Commands commandWord = command.getCommandName();
 
-        if (commandWord == Commands.UNKNOWN) {
-            System.out.println("I don't know what you mean...");
-            return false;
+
+        switch (commandWord) {
+            case HELP:
+                System.out.println("You are lost. You are alone. You wander");
+                System.out.println("around at the university.");
+                System.out.println();
+                System.out.println("Your command words are:");
+                printHelp();
+                break;
+            case GO:
+                if (game.goRoom(command)) {
+                    System.out.println(game.getRoomDescription());
+                } else {
+                    System.out.println("Can't walk in that direction.");
+                }
+                break;
+            case QUIT:
+                if (game.quit(command)) {
+                    wantToQuit = true;
+                } else {
+                    System.out.println("Quit what?");
+                }
+                break;
+            case PICKUP:
+                if (game.pickUp(command)) {
+                    System.out.println("Picked up item.");
+                } else {
+                    System.out.println("What item?");
+                }
+                break;
+            case DROP:
+                if (game.drop(command)) {
+                    System.out.println("Dropped item.");
+                } else {
+                    System.out.println("What item?");
+                }
+                break;
+            case INVENTORY:
+                printInventory();
+                break;
+            default:
+                System.out.println("I don't know what you mean...");
+                break;
         }
 
-        if (commandWord == Commands.HELP) {
-            System.out.println("You are lost. You are alone. You wander");
-            System.out.println("around at the university.");
-            System.out.println();
-            System.out.println("Your command words are:");
-            printHelp();
-        } else if (commandWord == Commands.GO) {
-            if (game.goRoom(command)) {
-                System.out.println(game.getRoomDescription());
-            } else {
-                System.out.println("Can't walk in that direction.");
-            }
-        } else if (commandWord == Commands.QUIT) {
-            if (game.quit(command)) {
-                wantToQuit = true;
-            } else {
-                System.out.println("Quit what?");
-            }
-
-        }
         return wantToQuit;
+    }
+
+    private void printInventory()
+    {
+        System.out.println("Items in inventory: ");
+        for(Item item : game.getInventory())
+        {
+            System.out.println(item.getName());
+        }
     }
 }
