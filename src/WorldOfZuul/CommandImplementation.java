@@ -19,8 +19,7 @@
 
 package WorldOfZuul;
 
-public class CommandImplementation implements Command
-{
+public class CommandImplementation implements Command {
     private final Commands commandName;
     private final String commandValue;
 

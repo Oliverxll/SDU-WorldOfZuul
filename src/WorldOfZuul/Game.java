@@ -154,7 +154,6 @@ public class Game {
                         //Add point every time item is dropped in recycle station
                         returnItem.addPoint();
 
-
                         inventory.remove(itemToDrop);
                     }
                     else
