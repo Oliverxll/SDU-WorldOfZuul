@@ -32,7 +32,7 @@ public class Game {
         firstStreet = new Room("1st of Cherrywood Hollies.");
         secondStreet = new Room("2nd of Cherrywood Hollies.");
         thirdStreet = new Room("3rd of Cherrywood Hollies.");
-        fourthStreet = new Room("4th of Cherrywood Hollies.");
+        fourthStreet = new Room("4th of Cherrywood Hollies.", new Item("paper"));
 
         fifthStreet = new RecycleStation("1st of Foxwood Bank.");
         sixthStreet = new Room("2nd of Foxwood Bank.",new Item("glass"));
@@ -45,7 +45,7 @@ public class Game {
         twelfthStreet = new Room("4th of Tothill Court.");
 
         thirtheenthStreet = new Room("1st of Hainworth Wood Road North.");
-        fourteenthStreet = new Room("2nd of Hainworth Wood Road North.");
+        fourteenthStreet = new Room("2nd of Hainworth Wood Road North.",new Item("can"));
         fifteenthStreet = new Room("3rd of Hainworth Wood Road North.");
         sixteenthStreet = new Room("4th of Hainworth Wood Road North.");
 
