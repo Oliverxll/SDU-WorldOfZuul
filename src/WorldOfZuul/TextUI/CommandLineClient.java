@@ -37,9 +37,9 @@ public class CommandLineClient {
 
     private void printWelcome() {
         System.out.println();
-        System.out.println("Welcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
-        System.out.println("Type '" + Commands.HELP + "' if you need help.");
+        System.out.println("Welcome to city of garbage");
+        System.out.println("City of garbage is a new, educational game");
+        System.out.println("Type '" + Commands.HELP + "' if you need any help.");
         System.out.println();
         System.out.println(game.getRoomDescription());
     }
@@ -84,14 +84,14 @@ public class CommandLineClient {
                 if (game.pickUp(command)) {
                     System.out.println("Picked up item.");
                 } else {
-                    System.out.println("What item?");
+                    System.out.println("What item do you want to pick up?");
                 }
                 break;
             case DROP:
                 if (game.drop(command)) {
                     System.out.println("Dropped item.");
                 } else {
-                    System.out.println("What item?");
+                    System.out.println("What item do you want to drop?");
                 }
                 break;
             case INVENTORY:

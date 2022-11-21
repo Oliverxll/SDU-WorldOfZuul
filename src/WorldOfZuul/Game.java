@@ -9,6 +9,9 @@ public class Game {
     private CommandWords commands;
     private Inventory inventory;
 
+    //Makes it possible to access a method in PointSystem by creating an object "returnItem"
+    PointSystem returnItem = new PointSystem();
+
 
     public Game() {
         createRooms();
@@ -32,7 +35,7 @@ public class Game {
         fourthStreet = new Room("4th of Cherrywood Hollies.");
 
         fifthStreet = new RecycleStation("1st of Foxwood Bank.");
-        sixthStreet = new Room("2nd of Foxwood Bank.");
+        sixthStreet = new Room("2nd of Foxwood Bank.",new Item("glass"));
         seventhStreet = new Room("3rd of Foxwood Bank.");
         eighthStreet = new Room("4th of Foxwood Bank.");
 
@@ -148,6 +151,9 @@ public class Game {
                     if (currentRoom instanceof RecycleStation) {
 
                         /* Do something. */ //TODO
+                        //Add point every time item is dropped in recycle station
+                        returnItem.addPoint();
+
 
                         inventory.remove(itemToDrop);
                     }
