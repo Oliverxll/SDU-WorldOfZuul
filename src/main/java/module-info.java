@@ -3,6 +3,6 @@ module worldofzuul.sduworldofzuul {
     requires javafx.fxml;
 
 
-    opens worldofzuul.sduworldofzuul to javafx.fxml;
-    exports worldofzuul.sduworldofzuul;
+    opens WorldOfZuul to javafx.fxml;
+    exports WorldOfZuul;
 }

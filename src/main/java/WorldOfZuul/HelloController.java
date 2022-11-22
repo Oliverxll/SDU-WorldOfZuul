@@ -1,4 +1,4 @@
-package worldofzuul.sduworldofzuul;
+package WorldOfZuul;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
