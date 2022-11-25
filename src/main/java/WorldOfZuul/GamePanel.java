@@ -31,7 +31,7 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
     Thread gameThread; // Makes it possible to start and stop a game. To use Thread we implement "Runnable" to this class
 
 
-    //Set players default possition
+    //Set players default position
     int playerX = 80;
     int playerY = 80;
     int playerSpeed = 4; //This mean 4 pixels. Så the player will move 4 pixels every time they move
