@@ -16,17 +16,12 @@ public class Main{
        // We add the GamePanel class to main
         GamePanel gamePanel = new GamePanel();
         window.add(gamePanel);
+
         window.pack(); // "pack()" makes the window the size that we set in GamePanel
-
-
 
         window.setLocationRelativeTo(null);// Places the window in the center of the screen
         window.setVisible(true);//So we can se window
 
         gamePanel.startGameThread();
-
-
-
-
     }
 }
