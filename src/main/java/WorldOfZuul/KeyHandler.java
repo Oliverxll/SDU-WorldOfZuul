@@ -21,7 +21,7 @@ public class KeyHandler implements KeyListener {//keylistener receives keyboard 
             leftPressed = true;
         }
 
-        if(code==KeyEvent.VK_DOWN){
+        if(code==KeyEvent.VK_D){
             rightPressed=true;
         }
 
@@ -43,7 +43,7 @@ public class KeyHandler implements KeyListener {//keylistener receives keyboard 
             leftPressed = false;
         }
 
-        if(code==KeyEvent.VK_DOWN){
+        if(code==KeyEvent.VK_D){
             rightPressed=false;
         }
 
