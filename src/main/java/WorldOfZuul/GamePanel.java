@@ -8,7 +8,7 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
     // SCREEN SETTINGS
     final int UNIT_SIZE_UNSCALED = 16; //16x16 Tile
     final int SCALE = 4;
-    final int UNIT_SIZE = UNIT_SIZE_UNSCALED * SCALE; // Make it 64-bit. This will make things scale up n size it fit screen
+    public final int UNIT_SIZE = UNIT_SIZE_UNSCALED * SCALE; // Make it 64-bit. This will make things scale up n size it fit screen
 
 
     //We decide the size of the game screen
@@ -25,10 +25,10 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
 
     //instantiate the keyHandler
     KeyHandler keyH = new KeyHandler();
-
-
     //When we call this thread it will automatically call the run method further below
     Thread gameThread; // Makes it possible to start and stop a game. To use Thread we implement "Runnable" to this class
+    //Instantiate the player class
+    Player player = new Player(this,keyH);
 
 
     //Set players default position
@@ -93,16 +93,7 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
     }
 
     public void update() {
-        if (keyH.upPressed == true) {
-            playerY -= playerSpeed;
-        } else if (keyH.downPressed == true) {
-            playerY += playerSpeed;
-        } else if (keyH.leftPressed == true) {
-            playerX -= playerSpeed;
-        } else if (keyH.rightPressed == true) {
-            playerX += playerSpeed;
-
-        }
+        player.update();
 
     }
 
@@ -113,12 +104,7 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
         //The graphics2D extend the graphics class. So we change the graphics g to graphics 2D
         Graphics2D g2 = (Graphics2D) g;
 
-
-        //This makes a white rectangle.
-        g2.setColor(Color.white);
-
-        //This is the coordinates and size
-        g2.fillRect(playerX, playerY, UNIT_SIZE, UNIT_SIZE);
+        player.draw(g2);
 
         g2.dispose();
 
