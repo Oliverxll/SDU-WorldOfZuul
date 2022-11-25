@@ -17,20 +17,17 @@ public class KeyHandler implements KeyListener {//keylistener receives keyboard 
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode(); //It returns the integer key code associated with the key pressed
 
-        if (code == KeyEvent.VK_A){
-            leftPressed = true;
+        if (code==KeyEvent.VK_W){
+            upPressed=true;
         }
-
-        if(code==KeyEvent.VK_D){
-            rightPressed=true;
-        }
-
         if(code==KeyEvent.VK_S){
             downPressed=true;
         }
-
-        if (code==KeyEvent.VK_W){
-            upPressed=true;
+        if (code == KeyEvent.VK_A){
+            leftPressed = true;
+        }
+        if(code==KeyEvent.VK_D){
+            rightPressed=true;
         }
 
     }
@@ -39,6 +36,12 @@ public class KeyHandler implements KeyListener {//keylistener receives keyboard 
     public void keyReleased(KeyEvent e) {
         int code = e.getKeyCode();
 
+        if (code==KeyEvent.VK_W){
+            upPressed=false;
+        }
+        if(code==KeyEvent.VK_S){
+            downPressed=false;
+        }
         if (code == KeyEvent.VK_A){
             leftPressed = false;
         }
@@ -46,15 +49,6 @@ public class KeyHandler implements KeyListener {//keylistener receives keyboard 
         if(code==KeyEvent.VK_D){
             rightPressed=false;
         }
-
-        if(code==KeyEvent.VK_S){
-            downPressed=false;
-        }
-
-        if (code==KeyEvent.VK_W){
-            upPressed=false;
-        }
-
 
     }
 

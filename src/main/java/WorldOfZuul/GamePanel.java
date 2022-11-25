@@ -55,8 +55,8 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
     //This is a method that we get recommended when implementing "Runnable" to the class
     @Override
     public void run() {
-        double drawInterval = 1000000000/FPS;  //It will draw on the screen every 0,016 seconds
-        double nextDrawTime = System.nanoTime()+ drawInterval;
+        double drawInterval = 1000000000 / FPS;  //It will draw on the screen every 0,016 seconds
+        double nextDrawTime = System.nanoTime() + drawInterval;
 
 
         //As long as this game loop continues it will update and repaint
@@ -70,19 +70,19 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
 
 
             try {
-                double remainingTime= nextDrawTime-System.nanoTime();
-                remainingTime = remainingTime/1000000;
+                double remainingTime = nextDrawTime - System.nanoTime();
+                remainingTime = remainingTime / 1000000;
 
-                if ( remainingTime<0){
-                    remainingTime=0;
+                if (remainingTime < 0) {
+                    remainingTime = 0;
                 }
 
-                Thread.sleep((long)remainingTime);
+                Thread.sleep((long) remainingTime);
 
-                nextDrawTime+=drawInterval;
+                nextDrawTime += drawInterval;
 
             } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
 
 
