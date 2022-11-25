@@ -41,7 +41,6 @@ public class Player extends Entity
         direction = "down";
     }
 
-
     public void getPlayerImage()
     {
         try
@@ -62,16 +61,16 @@ public class Player extends Entity
     }
 
     public void update (){
-        if (keyhandler.upPressed == true) {
+        if (keyhandler.upPressed) {
             direction = "up";
             position.y -= moveSpeed;
-        } else if (keyhandler.downPressed == true) {
+        } else if (keyhandler.downPressed) {
             direction ="down";
             position.y += moveSpeed;
-        } else if (keyhandler.leftPressed == true) {
+        } else if (keyhandler.leftPressed) {
             direction = "left";
             position.x -= moveSpeed;
-        } else if (keyhandler.rightPressed == true) {
+        } else if (keyhandler.rightPressed) {
             direction = "right";
             position.x += moveSpeed;
 
@@ -79,12 +78,12 @@ public class Player extends Entity
     }
     public void draw(Graphics2D g2){
         //This makes a white rectangle.
-        g2.setColor(Color.white);
+        //g2.setColor(Color.white);
 
         //This is the coordinates and size
-        g2.fillRect(position.x, position.y, gamePanel.UNIT_SIZE, gamePanel.UNIT_SIZE);
+        //g2.fillRect(position.x, position.y, gamePanel.UNIT_SIZE, gamePanel.UNIT_SIZE);
 
-        BufferedImage image = down1;
+        BufferedImage image = null;
         switch (direction){
             case "up" -> {
                 image = up1;
