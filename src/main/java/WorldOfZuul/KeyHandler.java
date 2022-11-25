@@ -4,8 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.security.Key;
 
-public class KeyHandler implements KeyListener { //keylistener receives keyboard events.
-    //It then wants us to implement the methods: keyTyped, keyPressed and keyReleased
+public class KeyHandler implements KeyListener { // Keylistener receives keyboard events.
 
     public boolean upPressed, downPressed, leftPressed, rightPressed;
 
@@ -29,7 +28,6 @@ public class KeyHandler implements KeyListener { //keylistener receives keyboard
         if (code == KeyEvent.VK_RIGHT || code == KeyEvent.VK_D) {
             rightPressed = true;
         }
-
     }
 
     @Override
@@ -49,11 +47,5 @@ public class KeyHandler implements KeyListener { //keylistener receives keyboard
         if (code == KeyEvent.VK_RIGHT || code == KeyEvent.VK_D) {
             rightPressed = false;
         }
-
     }
-
-    enum MoveDirection {
-        UP, DOWN, LEFT, RIGHT, NOTHING
-    }
-
 }
