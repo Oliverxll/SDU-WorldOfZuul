@@ -15,7 +15,7 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
     final int maxScreenCol = 16; //Horizontally
     final int maxScreenRow = 12; // Vertically
 
-    final int ScreenWidth = UNIT_SIZE * maxScreenCol; // 64* 16 = 1024 pixels
+    final int ScreenWidth = UNIT_SIZE * maxScreenCol; // 64 * 16 = 1024 pixels
     final int ScreenHeight = UNIT_SIZE * maxScreenRow; //64 * 12 = 768 pixels
     //The size of our game screen will then be 1024 x 768 pixels
 
@@ -29,12 +29,6 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
     Thread gameThread; // Makes it possible to start and stop a game. To use Thread we implement "Runnable" to this class
     //Instantiate the player class
     Player player = new Player(this,keyH);
-
-
-    //Set players default position
-    int playerX = 80;
-    int playerY = 80;
-    int playerSpeed = 4; //This mean 4 pixels. Så the player will move 4 pixels every time they move
 
     //Constructor
     public GamePanel() {
