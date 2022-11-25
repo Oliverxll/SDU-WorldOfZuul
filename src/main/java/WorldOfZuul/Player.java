@@ -1,8 +1,8 @@
 package WorldOfZuul;
 
 import WorldOfZuul.DataTypes.Position;
+import WorldOfZuul.Utility.ImageLoader;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -10,11 +10,13 @@ import java.io.IOException;
 public class Player extends Entity
 {
     public int moveSpeed;
-    GamePanel gamePanel;
-    KeyHandler keyhandler;
-
     public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
     String direction;
+    public int spriteCounter = 0;
+    public int spriteNum = 1;
+
+    GamePanel gamePanel;
+    KeyHandler keyhandler;
 
     public Player(GamePanel gamePanel, KeyHandler keyhandler)
     {
@@ -45,14 +47,14 @@ public class Player extends Entity
     {
         try
         {
-            up1 = ImageIO.read(getClass().getResourceAsStream("/sprites/player/boy_up_1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/sprites/player/boy_up_2.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/sprites/player/boy_down_1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/sprites/player/boy_down_2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/sprites/player/boy_left_1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/sprites/player/boy_left_2.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/sprites/player/boy_right_1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/sprites/player/boy_right_2.png"));
+            up1 = ImageLoader.getInstance().Load("/sprites/player/boy_up_1.png", gamePanel.UNIT_SIZE, gamePanel.UNIT_SIZE);
+            up2 = ImageLoader.getInstance().Load("/sprites/player/boy_up_2.png", gamePanel.UNIT_SIZE, gamePanel.UNIT_SIZE);
+            down1 = ImageLoader.getInstance().Load("/sprites/player/boy_down_1.png", gamePanel.UNIT_SIZE, gamePanel.UNIT_SIZE);
+            down2 = ImageLoader.getInstance().Load("/sprites/player/boy_down_2.png", gamePanel.UNIT_SIZE, gamePanel.UNIT_SIZE);
+            left1 = ImageLoader.getInstance().Load("/sprites/player/boy_left_1.png", gamePanel.UNIT_SIZE, gamePanel.UNIT_SIZE);
+            left2 = ImageLoader.getInstance().Load("/sprites/player/boy_left_2.png", gamePanel.UNIT_SIZE, gamePanel.UNIT_SIZE);
+            right1 = ImageLoader.getInstance().Load("/sprites/player/boy_right_1.png", gamePanel.UNIT_SIZE, gamePanel.UNIT_SIZE);
+            right2 = ImageLoader.getInstance().Load("/sprites/player/boy_right_2.png", gamePanel.UNIT_SIZE, gamePanel.UNIT_SIZE);
 
         } catch (IOException e)
         {
@@ -73,32 +75,51 @@ public class Player extends Entity
         } else if (keyhandler.rightPressed) {
             direction = "right";
             position.x += moveSpeed;
+        }
 
+        if (keyhandler.upPressed || keyhandler.downPressed || keyhandler.leftPressed || keyhandler.rightPressed) {
+            spriteCounter++;
+            if (spriteCounter > 12) {
+                if (spriteNum == 1) {
+                    spriteNum = 2;
+                } else {
+                    spriteNum = 1;
+                }
+                spriteCounter = 0;
+            }
         }
     }
-    public void draw(Graphics2D g2){
-        //This makes a white rectangle.
-        //g2.setColor(Color.white);
-
-        //This is the coordinates and size
-        //g2.fillRect(position.x, position.y, gamePanel.UNIT_SIZE, gamePanel.UNIT_SIZE);
-
+    public void draw(Graphics2D g2)
+    {
         BufferedImage image = null;
+
         switch (direction){
             case "up" -> {
-                image = up1;
+                if (spriteNum == 1)
+                    image = up1;
+                else
+                    image = up2;
             }
             case "down" ->
             {
-                image = down1;
+                if (spriteNum == 1)
+                    image = down1;
+                else
+                    image = down2;
             }
             case "left" ->
             {
-                image = left1;
+                if (spriteNum == 1)
+                    image = left1;
+                else
+                    image = left2;
             }
             case "right" ->
             {
-                image = right1;
+                if (spriteNum == 1)
+                    image = right1;
+                else
+                    image = right2;
             }
         }
         g2.drawImage(image, position.x, position.y, gamePanel.UNIT_SIZE, gamePanel.UNIT_SIZE, null);
