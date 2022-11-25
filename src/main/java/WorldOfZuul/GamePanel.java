@@ -19,7 +19,6 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
     final int ScreenHeight = UNIT_SIZE * maxScreenRow; //64 * 12 = 768 pixels
     //The size of our game screen will then be 1024 x 768 pixels
 
-
     //FPS
     int FPS = 60;
 
@@ -60,14 +59,14 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
 
         //As long as this game loop continues it will update and repaint
         while (gameThread != null) {
+
             currentTime = System.nanoTime();
-
             delta += (currentTime - lastTime) / drawInterval;
-
+            timer += (currentTime - lastTime);
             lastTime = currentTime;
 
-            if (delta >= 1) {
-
+            if (delta >= 1)
+            {
                 //Update information such as characters position
                 update();
 
@@ -75,13 +74,14 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
                 repaint();
 
                 delta--;
+                drawCount++;
             }
 
             // FPS debug console logging.
             if (timer >= 1000000000) {
                 System.out.println("FPS: " + drawCount);
                 drawCount = 0;
-                timer = 0;
+                timer -= 1000000000;
             }
         }
     }
