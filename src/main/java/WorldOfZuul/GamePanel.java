@@ -23,17 +23,17 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
     int FPS = 60;
 
     //instantiate the keyHandler
-    KeyHandler keyH = new KeyHandler();
+    KeyHandler keyHandler = new KeyHandler();
     //When we call this thread it will automatically call the run method further below
     Thread gameThread; // Makes it possible to start and stop a game. To use Thread we implement "Runnable" to this class
     //Instantiate the player class
-    Player player = new Player(this,keyH);
+    Player player = new Player(this, keyHandler);
 
     //Constructor
     public GamePanel() {
         this.setPreferredSize(new Dimension(ScreenWidth, ScreenHeight));//Sets the size of this class
         this.setBackground(Color.BLACK); //Sets the background color to black
-        this.addKeyListener(keyH); //Makes the game panel recognize the key input
+        this.addKeyListener(keyHandler); //Makes the game panel recognize the key input
         this.setFocusable(true); // This makes the game panel focused on key input
     }
 
