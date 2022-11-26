@@ -9,14 +9,14 @@ import java.io.IOException;
 
 public class Player extends Entity
 {
-    public int moveSpeed;
-    public BufferedImage[] up, down, left, right;
-    String direction;
-    public int spriteCounter = 0;
-    public int spriteNum = 0;
+    private int moveSpeed;
+    private BufferedImage[] up, down, left, right;
+    private String direction;
+    private int spriteCounter = 0;
+    private int spriteNum = 0;
 
-    GamePanel gamePanel;
-    KeyHandler keyhandler;
+    private GamePanel gamePanel;
+    private KeyHandler keyhandler;
 
     public Player(GamePanel gamePanel, KeyHandler keyhandler)
     {

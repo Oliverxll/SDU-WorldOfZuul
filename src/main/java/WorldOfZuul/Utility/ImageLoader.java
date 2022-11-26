@@ -5,17 +5,14 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class ImageLoader
+public class ImageLoader // Singleton class
 {
+    // Singleton implementation
     private static ImageLoader instance = new ImageLoader();
-
+    public static ImageLoader getInstance() { return instance; }
     private ImageLoader() { } // Private = No one can instantiate it.
 
-    public static ImageLoader getInstance()
-    {
-        return instance;
-    }
-
+    // Loads image from path and scales it to desired width and height
     public BufferedImage Load(String path, int width, int height) throws IOException
     {
         BufferedImage oldImage = ImageIO.read(getClass().getResourceAsStream(path));

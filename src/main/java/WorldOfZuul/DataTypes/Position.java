@@ -1,7 +1,5 @@
 package WorldOfZuul.DataTypes;
 
-import WorldOfZuul.DataTypes.IntVector2;
-
 public class Position extends IntVector2 // We're working in pixel space which is integers.
 {
     public Position(int x, int y) {
@@ -15,5 +13,4 @@ public class Position extends IntVector2 // We're working in pixel space which i
     public Position() {
         super();
     }
-
 }
