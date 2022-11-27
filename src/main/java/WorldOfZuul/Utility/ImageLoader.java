@@ -9,7 +9,12 @@ public class ImageLoader // Singleton class
 {
     // Singleton implementation
     private static ImageLoader instance = new ImageLoader();
-    public static ImageLoader getInstance() { return instance; }
+    public static ImageLoader getInstance() {
+        if (instance != null)
+            instance = new ImageLoader();
+
+        return instance;
+    }
     private ImageLoader() { } // Private = No one can instantiate it.
 
     // Loads image from path and scales it to desired width and height
