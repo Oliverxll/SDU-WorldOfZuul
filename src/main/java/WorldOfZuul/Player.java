@@ -15,6 +15,8 @@ public class Player extends Entity
     private int spriteCounter = 0;
     private int spriteNum = 0;
 
+    public Position screenPos;
+
     private GamePanel gamePanel;
     private KeyHandler keyhandler;
 
@@ -22,6 +24,10 @@ public class Player extends Entity
     {
         this.gamePanel = gamePanel;
         this.keyhandler = keyhandler;
+
+        screenPos = new Position(gamePanel.screenWidth/2 - gamePanel.UNIT_SIZE/2,
+                                 gamePanel.screenHeight/2 - gamePanel.UNIT_SIZE/2);
+
         setDefaultValues();
         getPlayerImage();
     }
@@ -38,7 +44,8 @@ public class Player extends Entity
 
     public void setDefaultValues()
     {
-        position = new Position(80, 80);
+        position = new Position(gamePanel.maxWorldCol * gamePanel.UNIT_SIZE / 2 - gamePanel.UNIT_SIZE / 2,
+                                gamePanel.maxWorldRow * gamePanel.UNIT_SIZE / 2 - gamePanel.UNIT_SIZE / 2);
         moveSpeed = 4;
         direction = "down";
     }
@@ -85,8 +92,11 @@ public class Player extends Entity
             position.x += moveSpeed;
         }
 
+        // We only want to animate our player, when we are moving.
         if (keyhandler.upPressed || keyhandler.downPressed || keyhandler.leftPressed || keyhandler.rightPressed) {
+            // Every frame we count up by one.
             spriteCounter++;
+            // Making this animate the sprite at 0.2 seconds per sprite. (12 / 60 = 0.2)
             if (spriteCounter > 12) {
                 if (spriteNum == 0) {
                     spriteNum = 1;
@@ -102,23 +112,12 @@ public class Player extends Entity
         BufferedImage image = null;
 
         switch (direction){
-            case "up" -> {
-                image = up[spriteNum];
-            }
-            case "down" ->
-            {
-                image = down[spriteNum];
-            }
-            case "left" ->
-            {
-                image = left[spriteNum];
-            }
-            case "right" ->
-            {
-                image = right[spriteNum];
-            }
+            case "up" -> image = up[spriteNum];
+            case "down" -> image = down[spriteNum];
+            case "left" -> image = left[spriteNum];
+            case "right" -> image = right[spriteNum];
         }
-        g2.drawImage(image, position.x, position.y, gamePanel.UNIT_SIZE, gamePanel.UNIT_SIZE, null);
 
+        g2.drawImage(image, screenPos.x, screenPos.y, null);
     }
 }
