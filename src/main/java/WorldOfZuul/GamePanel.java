@@ -9,19 +9,23 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
     final int UNIT_SIZE_UNSCALED = 16; //16x16 Tile
     final int SCALE = 4;
     public final int UNIT_SIZE = UNIT_SIZE_UNSCALED * SCALE; // Make it 64-bit. This will make things scale up n size it fit screen
-
-
-    //We decide the size of the game screen
     final int maxScreenCol = 16; //Horizontally
     final int maxScreenRow = 12; // Vertically
-
-    final int ScreenWidth = UNIT_SIZE * maxScreenCol; // 64 * 16 = 1024 pixels
-    final int ScreenHeight = UNIT_SIZE * maxScreenRow; //64 * 12 = 768 pixels
+    final int screenWidth = maxScreenCol * UNIT_SIZE; // 64 * 16 = 1024 pixels
+    final int screenHeight = maxScreenRow * UNIT_SIZE; //64 * 12 = 768 pixels
     //The size of our game screen will then be 1024 x 768 pixels
+
+    // WORLD SETTINGS
+    public final int maxWorldCol = 48;
+    public final int maxWorldRow = 48;
+    public final int worldWidth = maxWorldCol * UNIT_SIZE;
+    public final int worldHeight = maxWorldRow * UNIT_SIZE;
 
     //FPS
     int FPS = 60;
 
+
+    TileManager tileManager = new TileManager(this);
     //instantiate the keyHandler
     KeyHandler keyHandler = new KeyHandler();
     //When we call this thread it will automatically call the run method further below
@@ -31,7 +35,7 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
 
     //Constructor
     public GamePanel() {
-        this.setPreferredSize(new Dimension(ScreenWidth, ScreenHeight));//Sets the size of this class
+        this.setPreferredSize(new Dimension(screenWidth, screenHeight));//Sets the size of this class
         this.setBackground(Color.BLACK); //Sets the background color to black
         this.addKeyListener(keyHandler); //Makes the game panel recognize the key input
         this.setFocusable(true); // This makes the game panel focused on key input
@@ -48,7 +52,7 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
     //This is a method that we get recommended when implementing "Runnable" to the class
     @Override
     public void run() {
-        double drawInterval = 1000000000 / FPS;  //It will draw on the screen every 0,016 seconds
+        double drawInterval = 1000000000f / FPS;  //It will draw on the screen every 0,016 seconds
         double delta = 0;
         long lastTime = System.nanoTime();
         long currentTime;
@@ -98,9 +102,9 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
         //The graphics2D extend the graphics class. So we change the graphics g to graphics 2D
         Graphics2D g2 = (Graphics2D) g;
 
+        tileManager.draw(g2);
         player.draw(g2);
 
         g2.dispose();
-
     }
 }
