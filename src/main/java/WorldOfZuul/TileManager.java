@@ -30,23 +30,23 @@ public class TileManager
         {
             tiles[0] = new Tile();
             tiles[0].image = ImageLoader.getInstance().Load("/sprites/tiles/blank.png", gamePanel.UNIT_SIZE, gamePanel.UNIT_SIZE);
-            tiles[0].collision = true;
+            tiles[0].canCollide = true;
 
             tiles[1] = new Tile();
             tiles[1].image = ImageLoader.getInstance().Load("/sprites/tiles/road_0.png", gamePanel.UNIT_SIZE, gamePanel.UNIT_SIZE);
-            tiles[1].collision = false;
+            tiles[1].canCollide = false;
 
             tiles[2] = new Tile();
             tiles[2].image = ImageLoader.getInstance().Load("/sprites/tiles/road_1.png", gamePanel.UNIT_SIZE, gamePanel.UNIT_SIZE);
-            tiles[2].collision = false;
+            tiles[2].canCollide = false;
 
             tiles[3] = new Tile();
             tiles[3].image = ImageLoader.getInstance().Load("/sprites/tiles/sidewalk_0.png", gamePanel.UNIT_SIZE, gamePanel.UNIT_SIZE);
-            tiles[3].collision = false;
+            tiles[3].canCollide = false;
 
             tiles[4] = new Tile();
             tiles[4].image = ImageLoader.getInstance().Load("/sprites/tiles/wall_0.png", gamePanel.UNIT_SIZE, gamePanel.UNIT_SIZE);
-            tiles[4].collision = true;
+            tiles[4].canCollide = true;
 
         } catch (IOException e)
         {
