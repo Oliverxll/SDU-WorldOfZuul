@@ -97,10 +97,13 @@ public class Player extends Entity
                 direction = "right";
             }
 
-            int itemIndex = gamePanel.collisionChecker.checkItem(this,true);
-
             collision = false;
             gamePanel.collisionChecker.checkTile(this);
+
+            //Check item colletion
+            int itemIndex = gamePanel.collisionChecker.checkItem(this,true);
+
+
 
             if (!collision) {
                 switch (direction) {

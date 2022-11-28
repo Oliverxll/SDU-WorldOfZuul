@@ -13,8 +13,8 @@ public class Item
     public Position position = new Position();
     public boolean collision;
     public Rectangle collider = new Rectangle(32, 32);
-    public int solidAreaDefaultX = 0;
-    public int solidAreaDefaultY = 0;
+    public int solidAreaDefaultX=0;
+    public int solidAreaDefaultY=0;
 
     public ItemType itemType;
 
