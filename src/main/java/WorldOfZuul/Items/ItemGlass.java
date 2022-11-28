@@ -4,8 +4,8 @@ import WorldOfZuul.Utility.ImageLoader;
 
 import java.io.IOException;
 
-public class ItemCan extends SuperItem{
-    public ItemCan() {
+public class ItemGlass extends SuperItem{
+    public ItemGlass() {
         name = "Can";
 
         try {

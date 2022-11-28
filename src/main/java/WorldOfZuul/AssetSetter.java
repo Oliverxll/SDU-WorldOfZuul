@@ -1,6 +1,7 @@
 package WorldOfZuul;
 
 import WorldOfZuul.Items.ItemApple;
+import WorldOfZuul.Items.ItemCan;
 
 public class AssetSetter {
     GamePanel gamePanel;
@@ -13,7 +14,7 @@ public class AssetSetter {
         gamePanel.superItems[0].worldX = 25 * gamePanel.UNIT_SIZE;
         gamePanel.superItems[0].worldY = 5 * gamePanel.UNIT_SIZE;
 
-        gamePanel.superItems[1]= new ItemApple();
+        gamePanel.superItems[1]= new ItemCan();
         gamePanel.superItems[1].worldX = 25*gamePanel.UNIT_SIZE;
         gamePanel.superItems[1].worldY = 43 * gamePanel.UNIT_SIZE;
     }
