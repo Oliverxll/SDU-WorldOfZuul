@@ -102,6 +102,7 @@ public class Player extends Entity
 
             //Check item colletion
             int itemIndex = gamePanel.collisionChecker.checkItem(this,true);
+            pickUpItem(itemIndex);
 
 
 
@@ -127,6 +128,12 @@ public class Player extends Entity
                 spriteCounter = 0;
             }
         }
+    }
+    public void pickUpItem(int i){
+        if (i!=999){
+            gamePanel.superItems[i]=null;
+        }
+
     }
 
     public void draw(Graphics2D g2)

@@ -70,25 +70,45 @@ public class CollisionChecker {
                     case "up":
                         entity.collider.y -= entity.moveSpeed;
                         if (entity.collider.intersects(gamePanel.superItems[i].collider)) {
-                            System.out.println("You have found trash");
+                            if (gamePanel.superItems[i].collision==true){
+                                entity.collision = true;
+                            }
+                            if(player==true){
+                                index = i;
+                            }
                         }
                         break;
                     case "down":
                         entity.collider.y += entity.moveSpeed;
                         if (entity.collider.intersects(gamePanel.superItems[i].collider)) {
-                            System.out.println("You have found trash");
+                            if (gamePanel.superItems[i].collision==true){
+                                entity.collision = true;
+                            }
+                            if(player==true){
+                                index = i;
+                            }
                         }
                         break;
                     case "left":
                         entity.collider.x -= entity.moveSpeed;
                         if (entity.collider.intersects(gamePanel.superItems[i].collider)) {
-                            System.out.println("You have found trash");
+                            if (gamePanel.superItems[i].collision==true){
+                                entity.collision = true;
+                            }
+                            if(player==true){
+                                index = i;
+                            }
                         }
                         break;
                     case "right":
                         entity.collider.x += entity.moveSpeed;
                         if (entity.collider.intersects(gamePanel.superItems[i].collider)) {
-                            System.out.println("You have found trash");
+                            if (gamePanel.superItems[i].collision==true){
+                                entity.collision = true;
+                            }
+                            if(player==true){
+                                index = i;
+                            }
                         }
                         break;
                 }
