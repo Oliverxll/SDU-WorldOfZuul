@@ -10,7 +10,7 @@ public class ImageLoader // Singleton class
     // Singleton implementation
     private static ImageLoader instance = new ImageLoader();
     public static ImageLoader getInstance() {
-        if (instance != null)
+        if (instance == null)
             instance = new ImageLoader();
 
         return instance;
