@@ -61,7 +61,8 @@ public class CollisionChecker
 
     private void checkCollision(Entity entity, int tile1, int tile2)
     {
-        if (gamePanel.tileManager.tiles[tile1].canCollide || gamePanel.tileManager.tiles[tile2].canCollide) {
+        if (gamePanel.tileManager.tiles[tile1].canCollide ||
+                gamePanel.tileManager.tiles[tile2].canCollide) {
             entity.collision = true;
         }
     }
