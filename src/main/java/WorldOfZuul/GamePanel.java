@@ -24,7 +24,7 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
     //FPS
     int FPS = 60;
 
-
+    CollisionChecker collisionChecker = new CollisionChecker(this);
     TileManager tileManager = new TileManager(this);
     //instantiate the keyHandler
     KeyHandler keyHandler = new KeyHandler();
