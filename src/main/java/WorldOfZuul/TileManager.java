@@ -15,6 +15,10 @@ public class TileManager
     Tile[] tiles;
     int[][] mapTileNumber;
 
+    
+
+
+
     public TileManager(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
 
@@ -74,6 +78,8 @@ public class TileManager
 
                     mapTileNumber[col][row] = number;
                     col++;
+
+                    // TODO: Spawn trash at tile. 0.02 spawn chance (About 10 trash per game)
                 }
 
                 if (col == gamePanel.maxWorldCol) {

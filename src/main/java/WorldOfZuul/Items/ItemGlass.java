@@ -1,10 +1,11 @@
 package WorldOfZuul.Items;
 
+import WorldOfZuul.DataTypes.Item;
 import WorldOfZuul.Utility.ImageLoader;
 
 import java.io.IOException;
 
-public class ItemGlass extends SuperItem{
+public class ItemGlass extends Item {
     public ItemGlass() {
         name = "Can";
 

@@ -10,12 +10,12 @@ public class AssetSetter {
     }
 
     public void setObject (){
-        gamePanel.superItems[0]= new ItemApple();
-        gamePanel.superItems[0].worldX = 25 * gamePanel.UNIT_SIZE;
-        gamePanel.superItems[0].worldY = 5 * gamePanel.UNIT_SIZE;
+        gamePanel.superItems[0] = new ItemApple();
+        gamePanel.superItems[0].position.x = 25 * gamePanel.UNIT_SIZE;
+        gamePanel.superItems[0].position.y = 5 * gamePanel.UNIT_SIZE;
 
-        gamePanel.superItems[1]= new ItemCan();
-        gamePanel.superItems[1].worldX = 25*gamePanel.UNIT_SIZE;
-        gamePanel.superItems[1].worldY = 43 * gamePanel.UNIT_SIZE;
+        gamePanel.superItems[1] = new ItemCan();
+        gamePanel.superItems[1].position.x = 25*gamePanel.UNIT_SIZE;
+        gamePanel.superItems[1].position.y = 43 * gamePanel.UNIT_SIZE;
     }
 }

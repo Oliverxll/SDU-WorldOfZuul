@@ -1,10 +1,11 @@
 package WorldOfZuul.Items;
 
+import WorldOfZuul.DataTypes.Item;
 import WorldOfZuul.Utility.ImageLoader;
 
 import java.io.IOException;
 
-public class ItemApple extends SuperItem {
+public class ItemApple extends Item {
     public ItemApple() {
         name = "plastic";
 

@@ -1,6 +1,6 @@
 package WorldOfZuul;
 
-import WorldOfZuul.Items.SuperItem;
+import WorldOfZuul.DataTypes.Item;
 
 import javax.swing.JPanel;
 import java.awt.*;
@@ -35,7 +35,7 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
     //Instantiate the player class
     public AssetSetter assetSetter = new AssetSetter(this);
     public Player player = new Player(this, keyHandler);
-    public SuperItem superItems [] = new SuperItem[10];
+    public Item superItems [] = new Item[10];
 
     //Constructor
     public GamePanel() {
