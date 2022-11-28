@@ -1,5 +1,7 @@
 package WorldOfZuul;
 
+import WorldOfZuul.Items.SuperItem;
+
 import javax.swing.JPanel;
 import java.awt.*;
 
@@ -32,6 +34,8 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
     Thread gameThread; // Makes it possible to start and stop a game. To use Thread we implement "Runnable" to this class
     //Instantiate the player class
     Player player = new Player(this, keyHandler);
+
+    public SuperItem item [] = new SuperItem[10];
 
     //Constructor
     public GamePanel() {
