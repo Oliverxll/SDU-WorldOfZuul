@@ -9,9 +9,9 @@ import java.io.IOException;
 
 public class Player extends Entity
 {
-    private int moveSpeed;
     private BufferedImage[] up, down, left, right;
-    private String direction;
+
+    // Animation variables
     private int spriteCounter = 0;
     private int spriteNum = 0;
 
@@ -44,8 +44,11 @@ public class Player extends Entity
 
     public void setDefaultValues()
     {
-        position = new Position(gamePanel.maxWorldCol * gamePanel.UNIT_SIZE / 2 - gamePanel.UNIT_SIZE / 2,
-                                gamePanel.maxWorldRow * gamePanel.UNIT_SIZE / 2 - gamePanel.UNIT_SIZE / 2);
+        position = new Position(gamePanel.worldWidth / 2 - gamePanel.UNIT_SIZE / 2,
+                                gamePanel.worldHeight / 2 - gamePanel.UNIT_SIZE / 2);
+
+        collider = new Rectangle(11, 22, gamePanel.UNIT_SIZE - 22, gamePanel.UNIT_SIZE - 22);
+
         moveSpeed = 4;
         direction = "down";
     }
@@ -78,22 +81,32 @@ public class Player extends Entity
     }
 
     public void update (){
-        if (keyhandler.upPressed) {
-            direction = "up";
-            position.y -= moveSpeed;
-        } else if (keyhandler.downPressed) {
-            direction ="down";
-            position.y += moveSpeed;
-        } else if (keyhandler.leftPressed) {
-            direction = "left";
-            position.x -= moveSpeed;
-        } else if (keyhandler.rightPressed) {
-            direction = "right";
-            position.x += moveSpeed;
-        }
-
-        // We only want to animate our player, when we are moving.
+        // We only want to do anything when we're pressing a key.
         if (keyhandler.upPressed || keyhandler.downPressed || keyhandler.leftPressed || keyhandler.rightPressed) {
+
+            if (keyhandler.upPressed) {
+                direction = "up";
+            } else if (keyhandler.downPressed) {
+                direction = "down";
+            } else if (keyhandler.leftPressed) {
+                direction = "left";
+            } else if (keyhandler.rightPressed) {
+                direction = "right";
+            }
+
+            collision = false;
+            gamePanel.collisionChecker.checkTile(this);
+
+            if (!collision) {
+                switch (direction) {
+                    case "up" -> position.y -= moveSpeed;
+                    case "down" -> position.y += moveSpeed;
+                    case "left" -> position.x -= moveSpeed;
+                    case "right" -> position.x += moveSpeed;
+                }
+            }
+
+
             // Every frame we count up by one.
             spriteCounter++;
             // Making this animate the sprite at 0.2 seconds per sprite. (12 / 60 = 0.2)
@@ -107,6 +120,7 @@ public class Player extends Entity
             }
         }
     }
+
     public void draw(Graphics2D g2)
     {
         BufferedImage image = null;
