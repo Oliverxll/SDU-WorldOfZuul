@@ -33,9 +33,9 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
     //When we call this thread it will automatically call the run method further below
     Thread gameThread; // Makes it possible to start and stop a game. To use Thread we implement "Runnable" to this class
     //Instantiate the player class
-    Player player = new Player(this, keyHandler);
-
-    public SuperItem item [] = new SuperItem[10];
+    public AssetSetter assetSetter = new AssetSetter(this);
+    public Player player = new Player(this, keyHandler);
+    public SuperItem superItems [] = new SuperItem[10];
 
     //Constructor
     public GamePanel() {
@@ -43,6 +43,10 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
         this.setBackground(Color.BLACK); //Sets the background color to black
         this.addKeyListener(keyHandler); //Makes the game panel recognize the key input
         this.setFocusable(true); // This makes the game panel focused on key input
+    }
+
+    public void setUpGame (){
+        assetSetter.setObject();
     }
 
 
@@ -106,7 +110,17 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
         //The graphics2D extend the graphics class. So we change the graphics g to graphics 2D
         Graphics2D g2 = (Graphics2D) g;
 
+        //Tile
         tileManager.draw(g2);
+
+        //Objects
+        for (int i = 0; i< superItems.length;i++){
+            if (superItems[i]!=null){
+                superItems[i].draw(g2,this);
+            }
+        }
+
+        //Player
         player.draw(g2);
 
         g2.dispose();
