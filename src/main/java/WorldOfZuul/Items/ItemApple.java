@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class ItemApple extends Item {
     public ItemApple() {
-        name = "plastic";
+        name = "Apple";
 
         try {
             image = ImageLoader.getInstance().Load("/objects/apple.png", 32,32);

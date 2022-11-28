@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class ItemGlass extends Item {
     public ItemGlass() {
-        name = "Can";
+        name = "Glass";
 
         try {
             image = ImageLoader.getInstance().Load("/objects/glass.png", 32,32);

@@ -19,6 +19,8 @@ public class Player extends Entity
 
     private GamePanel gamePanel;
     private KeyHandler keyhandler;
+    int hasItem=0;
+
 
     public Player(GamePanel gamePanel, KeyHandler keyhandler)
     {
@@ -131,7 +133,20 @@ public class Player extends Entity
     }
     public void pickUpItem(int i){
         if (i!=999){
-            gamePanel.superItems[i]=null;
+            String itemName = gamePanel.superItems[i].name;
+
+            switch (itemName){
+                case "Apple":
+                case "Plastic":
+                case "Paper":
+                case "Glass":
+                case "Can":
+                    hasItem++;
+                    gamePanel.superItems[i]= null;
+                    break;
+            }
+
+
         }
 
     }
