@@ -35,7 +35,7 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
     //Instantiate the player class
     public AssetSetter assetSetter = new AssetSetter(this);
     public Player player = new Player(this, keyHandler);
-    public Item superItems [] = new Item[10];
+    public Item superItems [] = new Item[5];
 
     //Constructor
     public GamePanel() {
