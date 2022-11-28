@@ -1,5 +1,6 @@
 package WorldOfZuul.DataTypes;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Item
@@ -7,8 +8,9 @@ public class Item
     public String name;
     public String description;
     public BufferedImage image;
-    public boolean collision;
     public Position position;
+    public boolean collision;
+    public Rectangle collider;
 
     public ItemType itemType;
 
