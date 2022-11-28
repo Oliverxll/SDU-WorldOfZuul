@@ -15,5 +15,6 @@ public class ItemGlass extends Item {
         }catch (IOException e) {
             e.printStackTrace();
         }
+        collision=true;
     }
 }

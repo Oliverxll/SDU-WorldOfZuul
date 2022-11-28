@@ -28,6 +28,9 @@ public class Player extends Entity
         screenPos = new Position(gamePanel.screenWidth/2 - gamePanel.UNIT_SIZE/2,
                                  gamePanel.screenHeight/2 - gamePanel.UNIT_SIZE/2);
 
+        solidAreaDefaultX = collider.x;
+        solidAreaDefaultY = collider.y;
+
         setDefaultValues();
         getPlayerImage();
     }
@@ -93,6 +96,8 @@ public class Player extends Entity
             } else if (keyhandler.rightPressed) {
                 direction = "right";
             }
+
+            int itemIndex = gamePanel.collisionChecker.checkItem(this,true);
 
             collision = false;
             gamePanel.collisionChecker.checkTile(this);

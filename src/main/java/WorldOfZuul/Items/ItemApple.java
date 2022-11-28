@@ -15,5 +15,6 @@ public class ItemApple extends Item {
         }catch (IOException e) {
             e.printStackTrace();
         }
+        collision=true;
     }
 }

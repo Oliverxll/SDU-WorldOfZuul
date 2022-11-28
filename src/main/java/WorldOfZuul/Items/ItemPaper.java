@@ -15,5 +15,6 @@ public class ItemPaper extends Item {
         }catch (IOException e) {
             e.printStackTrace();
         }
+        collision=true;
     }
 }

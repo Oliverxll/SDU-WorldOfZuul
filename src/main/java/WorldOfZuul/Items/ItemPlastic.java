@@ -15,6 +15,7 @@ public class ItemPlastic extends Item {
         }catch (IOException e) {
             e.printStackTrace();
         }
+        collision=true;
     }
 }
 

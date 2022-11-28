@@ -15,5 +15,6 @@ public class ItemCan extends Item {
         }catch (IOException e) {
             e.printStackTrace();
         }
+        collision=true;
     }
 }
