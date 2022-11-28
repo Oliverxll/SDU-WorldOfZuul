@@ -5,15 +5,16 @@ import WorldOfZuul.Utility.ImageLoader;
 
 import java.io.IOException;
 
-public class ItemGlass extends Item {
-    public ItemGlass() {
-        name = "Can";
+public class ItemPlastic extends Item {
+    public ItemPlastic() {
+        name = "Plastic";
 
         try {
-            image = ImageLoader.getInstance().Load("/objects/glass.png", 32,32);
+            image = ImageLoader.getInstance().Load("/objects/plastic.png", 32,32);
 
         }catch (IOException e) {
             e.printStackTrace();
         }
     }
 }
+
