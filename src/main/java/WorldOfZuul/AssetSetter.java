@@ -54,10 +54,5 @@ public class AssetSetter extends Item {
         gamePanel.items[9].position.x = 40 *gamePanel.UNIT_SIZE;
         gamePanel.items[9].position.y = 21 * gamePanel.UNIT_SIZE;
 
-        gamePanel.items[9]= new TrashCanYellow();
-        gamePanel.items[9].position.x = 2 *gamePanel.UNIT_SIZE;
-        gamePanel.items[9].position.y = 21 * gamePanel.UNIT_SIZE;
-
-
     }
 }
