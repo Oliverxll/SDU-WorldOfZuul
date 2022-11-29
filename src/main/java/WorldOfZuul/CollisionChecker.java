@@ -56,69 +56,61 @@ public class CollisionChecker {
 
     public int checkItem(Entity entity, boolean player) {
         int index = 999;
-        for (int i = 0; i < gamePanel.superItems.length; i++) {
+        for (int i = 0; i < gamePanel.items.length; i++) {
 
-            if (gamePanel.superItems[i] != null) {
+            if (gamePanel.items[i] != null) {
                 //Entity
                 entity.collider.x = entity.position.x + entity.collider.x;
                 entity.collider.y = entity.position.y + entity.collider.y;
                 //Object
-                gamePanel.superItems[i].collider.x = gamePanel.superItems[i].position.x + gamePanel.superItems[i].collider.x;
-                gamePanel.superItems[i].collider.y = gamePanel.superItems[i].position.y + gamePanel.superItems[i].collider.y;
+                gamePanel.items[i].collider.x = gamePanel.items[i].position.x + gamePanel.items[i].collider.x;
+                gamePanel.items[i].collider.y = gamePanel.items[i].position.y + gamePanel.items[i].collider.y;
 
-                switch (entity.direction) {
-                    case "up":
+                switch (entity.direction)
+                {
+                    case "up" ->
+                    {
                         entity.collider.y -= entity.moveSpeed;
-                        if (entity.collider.intersects(gamePanel.superItems[i].collider)) {
-                            if (gamePanel.superItems[i].collision==true){
-                                entity.collision = true;
-                            }
-                            if(player==true){
-                                index = i;
-                            }
-                        }
-                        break;
-                    case "down":
+                        index = checkItemCollision(entity, player, index, i);
+                    }
+                    case "down" ->
+                    {
                         entity.collider.y += entity.moveSpeed;
-                        if (entity.collider.intersects(gamePanel.superItems[i].collider)) {
-                            if (gamePanel.superItems[i].collision==true){
-                                entity.collision = true;
-                            }
-                            if(player==true){
-                                index = i;
-                            }
-                        }
-                        break;
-                    case "left":
+                        index = checkItemCollision(entity, player, index, i);
+                    }
+                    case "left" ->
+                    {
                         entity.collider.x -= entity.moveSpeed;
-                        if (entity.collider.intersects(gamePanel.superItems[i].collider)) {
-                            if (gamePanel.superItems[i].collision==true){
-                                entity.collision = true;
-                            }
-                            if(player==true){
-                                index = i;
-                            }
-                        }
-                        break;
-                    case "right":
+                        index = checkItemCollision(entity, player, index, i);
+                    }
+                    case "right" ->
+                    {
                         entity.collider.x += entity.moveSpeed;
-                        if (entity.collider.intersects(gamePanel.superItems[i].collider)) {
-                            if (gamePanel.superItems[i].collision==true){
-                                entity.collision = true;
-                            }
-                            if(player==true){
-                                index = i;
-                            }
-                        }
-                        break;
+                        index = checkItemCollision(entity, player, index, i);
+                    }
                 }
-                entity.collider.x = entity.solidAreaDefaultX;
-                entity.collider.y = entity.solidAreaDefaultY;
-                gamePanel.superItems[i].collider.x = gamePanel.superItems[i].solidAreaDefaultX;
-                gamePanel.superItems[i].collider.y = gamePanel.superItems[i].solidAreaDefaultY;
-
+                entity.collider.x = entity.colliderAreaDefaultX;
+                entity.collider.y = entity.colliderAreaDefaultY;
+                gamePanel.items[i].collider.x = gamePanel.items[i].colliderAreaDefaultX;
+                gamePanel.items[i].collider.y = gamePanel.items[i].colliderAreaDefaultY;
             }
+        }
 
+        return index;
+    }
+
+    private int checkItemCollision(Entity entity, boolean player, int index, int i)
+    {
+        if (entity.collider.intersects(gamePanel.items[i].collider))
+        {
+            if (gamePanel.items[i].collision)
+            {
+                entity.collision = true;
+            }
+            if (player)
+            {
+                index = i;
+            }
         }
         return index;
     }

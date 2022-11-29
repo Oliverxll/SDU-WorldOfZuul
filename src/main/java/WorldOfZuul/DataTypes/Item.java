@@ -13,8 +13,8 @@ public class Item
     public Position position = new Position();
     public boolean collision;
     public Rectangle collider = new Rectangle(32, 32);
-    public int solidAreaDefaultX=0;
-    public int solidAreaDefaultY=0;
+    public int colliderAreaDefaultX = 0;
+    public int colliderAreaDefaultY = 0;
 
     public ItemType itemType;
 
@@ -22,6 +22,18 @@ public class Item
         this.name = "No name";
         this.description = "No description";
         itemType = ItemType.UNKNOWN;
+    }
+
+    public Item(String name) {
+        this.name = name;
+        this.description = "No description";
+        this.itemType = ItemType.UNKNOWN;
+    }
+
+    public Item(String name, ItemType itemType) {
+        this.name = name;
+        this.description = "No description";
+        this.itemType = itemType;
     }
 
     public Item(String name, String description) {
@@ -56,6 +68,7 @@ public class Item
         METAL,
         PLASTIC,
         FOOD,
+        GLASS,
         UNKNOWN
     }
 }

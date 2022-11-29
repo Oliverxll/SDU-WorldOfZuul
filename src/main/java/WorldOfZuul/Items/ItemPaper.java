@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class ItemPaper extends Item {
     public ItemPaper() {
-        name = "Paper";
+        super("Paper", ItemType.PAPER);
 
         try {
             image = ImageLoader.getInstance().Load("/objects/paper.png", 32,32);
@@ -15,6 +15,6 @@ public class ItemPaper extends Item {
         }catch (IOException e) {
             e.printStackTrace();
         }
-        collision=true;
+        collision = true;
     }
 }

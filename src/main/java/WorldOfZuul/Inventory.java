@@ -8,13 +8,13 @@ import java.util.List;
 
 public class Inventory
 {
-    private static ArrayList<Item> innerList;
+    private ArrayList<Item> innerList;
 
     public Inventory() {
         innerList = new ArrayList<>();
     }
 
-    public static void add(Item item) {
+    public void add(Item item) {
         innerList.add(item);
     }
 
@@ -22,5 +22,7 @@ public class Inventory
         innerList.remove(item);
     }
 
-    public List<Item> getAll (){return innerList;}
+    public ArrayList<Item> getAll() {
+        return innerList;
+    }
 }

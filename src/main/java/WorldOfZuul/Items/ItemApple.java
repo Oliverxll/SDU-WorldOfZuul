@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class ItemApple extends Item {
     public ItemApple() {
-        name = "Apple";
+        super("Apple", ItemType.FOOD);
 
         try {
             image = ImageLoader.getInstance().Load("/objects/apple.png", 32,32);
@@ -15,6 +15,6 @@ public class ItemApple extends Item {
         }catch (IOException e) {
             e.printStackTrace();
         }
-        collision=true;
+        collision = true;
     }
 }

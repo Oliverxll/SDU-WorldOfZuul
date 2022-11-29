@@ -35,7 +35,7 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
     //Instantiate the player class
     public AssetSetter assetSetter = new AssetSetter(this);
     public Player player = new Player(this, keyHandler);
-    public Item superItems [] = new Item[5];
+    public Item items[] = new Item[5];
 
     //Constructor
     public GamePanel() {
@@ -114,9 +114,9 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
         tileManager.draw(g2);
 
         //Objects
-        for (int i = 0; i< superItems.length;i++){
-            if (superItems[i]!=null){
-                superItems[i].draw(g2,this);
+        for (int i = 0; i< items.length; i++){
+            if (items[i]!=null){
+                items[i].draw(g2,this);
             }
         }
 

@@ -1,13 +1,11 @@
 package WorldOfZuul;
 
-import WorldOfZuul.DataTypes.Item;
-import WorldOfZuul.DataTypes.Position;
+import WorldOfZuul.DataTypes.*;
 import WorldOfZuul.Utility.ImageLoader;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.List;
 
 public class Player extends Entity
 {
@@ -21,15 +19,10 @@ public class Player extends Entity
 
     private GamePanel gamePanel;
     private KeyHandler keyhandler;
-    int hasItem=0;
+
+    int hasItem = 0;
 
     Inventory inventory = new Inventory();
-
-    public void add (Item item){ Inventory.add(item);}
-
-    public List<Item> getInventory (){return inventory.getAll();}
-
-
 
     public Player(GamePanel gamePanel, KeyHandler keyhandler)
     {
@@ -39,8 +32,8 @@ public class Player extends Entity
         screenPos = new Position(gamePanel.screenWidth/2 - gamePanel.UNIT_SIZE/2,
                                  gamePanel.screenHeight/2 - gamePanel.UNIT_SIZE/2);
 
-        solidAreaDefaultX = collider.x;
-        solidAreaDefaultY = collider.y;
+        colliderAreaDefaultX = collider.x;
+        colliderAreaDefaultY = collider.y;
 
         setDefaultValues();
         getPlayerImage();
@@ -111,11 +104,9 @@ public class Player extends Entity
             collision = false;
             gamePanel.collisionChecker.checkTile(this);
 
-            //Check item colletion
+            //Check item collection
             int itemIndex = gamePanel.collisionChecker.checkItem(this,true);
             pickUpItem(itemIndex);
-
-
 
             if (!collision) {
                 switch (direction) {
@@ -125,7 +116,6 @@ public class Player extends Entity
                     case "right" -> position.x += moveSpeed;
                 }
             }
-
 
             // Every frame we count up by one.
             spriteCounter++;
@@ -141,23 +131,20 @@ public class Player extends Entity
         }
     }
     public void pickUpItem(int i){
-        if (i!=999){
-            String itemName = gamePanel.superItems[i].name;
+        if (i != 999){
+            Item.ItemType itemType = gamePanel.items[i].itemType;
 
-            switch (itemName){
-                case "Apple":
-                case "Plastic":
-                case "Paper":
-                case "Glass":
-                case "Can":
-                    Inventory.add(gamePanel.superItems[i]=null);
-                    //gamePanel.superItems[i]= null;
-                    break;
+            switch (itemType)
+            {
+                case FOOD, PLASTIC, PAPER, GLASS, METAL -> {
+                    inventory.add(gamePanel.items[i]);
+                    gamePanel.items[i] = null;
+                }
             }
-            //TODO get it to display inventory
-            System.out.println("Inventory:"+getInventory());
-        }
 
+            //TODO get it to display inventory
+            System.out.println("Inventory:" + inventory.getAll());
+        }
     }
 
 
@@ -165,7 +152,7 @@ public class Player extends Entity
     {
         BufferedImage image = null;
 
-        switch (direction){
+        switch (direction) {
             case "up" -> image = up[spriteNum];
             case "down" -> image = down[spriteNum];
             case "left" -> image = left[spriteNum];

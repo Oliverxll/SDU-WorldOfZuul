@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class ItemGlass extends Item {
     public ItemGlass() {
-        name = "Glass";
+        super("Glass", ItemType.GLASS);
 
         try {
             image = ImageLoader.getInstance().Load("/objects/glass.png", 32,32);
@@ -15,6 +15,6 @@ public class ItemGlass extends Item {
         }catch (IOException e) {
             e.printStackTrace();
         }
-        collision=true;
+        collision = true;
     }
 }
