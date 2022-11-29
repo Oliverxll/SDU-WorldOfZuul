@@ -154,6 +154,7 @@ public class Player extends Entity
                     //gamePanel.superItems[i]= null;
                     break;
             }
+            //TODO get it to display inventory
             System.out.println("Inventory:"+getInventory());
         }
 
