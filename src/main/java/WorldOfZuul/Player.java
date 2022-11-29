@@ -1,11 +1,13 @@
 package WorldOfZuul;
 
+import WorldOfZuul.DataTypes.Item;
 import WorldOfZuul.DataTypes.Position;
 import WorldOfZuul.Utility.ImageLoader;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.List;
 
 public class Player extends Entity
 {
@@ -20,6 +22,13 @@ public class Player extends Entity
     private GamePanel gamePanel;
     private KeyHandler keyhandler;
     int hasItem=0;
+
+    Inventory inventory = new Inventory();
+
+    public void add (Item item){
+        Inventory.add(item);
+    }
+
 
 
     public Player(GamePanel gamePanel, KeyHandler keyhandler)
@@ -141,8 +150,8 @@ public class Player extends Entity
                 case "Paper":
                 case "Glass":
                 case "Can":
-                    hasItem++;
-                    gamePanel.superItems[i]= null;
+                    Inventory.add(gamePanel.superItems[i]=null);
+                    //gamePanel.superItems[i]= null;
                     break;
             }
 
