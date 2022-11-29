@@ -26,6 +26,7 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
     //FPS
     int FPS = 60;
 
+    UI ui = new UI(this);
     CollisionChecker collisionChecker = new CollisionChecker(this);
     TileManager tileManager = new TileManager(this);
     //instantiate the keyHandler
@@ -35,7 +36,7 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
     //Instantiate the player class
     public AssetSetter assetSetter = new AssetSetter(this);
     public Player player = new Player(this, keyHandler);
-    public Item items[] = new Item[5];
+    public Item items[] = new Item[10];
 
     //Constructor
     public GamePanel() {
@@ -122,6 +123,8 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
 
         //Player
         player.draw(g2);
+
+        ui.draw(g2);
 
         g2.dispose();
     }
