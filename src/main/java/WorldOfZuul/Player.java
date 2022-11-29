@@ -25,9 +25,9 @@ public class Player extends Entity
 
     Inventory inventory = new Inventory();
 
-    public void add (Item item){
-        Inventory.add(item);
-    }
+    public void add (Item item){ Inventory.add(item);}
+
+    public List<Item> getInventory (){return inventory.getAll();}
 
 
 
@@ -154,11 +154,11 @@ public class Player extends Entity
                     //gamePanel.superItems[i]= null;
                     break;
             }
-
-
+            System.out.println("Inventory:"+getInventory());
         }
 
     }
+
 
     public void draw(Graphics2D g2)
     {

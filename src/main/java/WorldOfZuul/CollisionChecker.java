@@ -112,13 +112,13 @@ public class CollisionChecker {
                         }
                         break;
                 }
-
+                entity.collider.x = entity.solidAreaDefaultX;
+                entity.collider.y = entity.solidAreaDefaultY;
+                gamePanel.superItems[i].collider.x = gamePanel.superItems[i].solidAreaDefaultX;
+                gamePanel.superItems[i].collider.y = gamePanel.superItems[i].solidAreaDefaultY;
 
             }
-            entity.collider.x = entity.solidAreaDefaultX;
-            entity.collider.y = entity.solidAreaDefaultY;
-            gamePanel.superItems[i].collider.x = gamePanel.superItems[i].solidAreaDefaultX;
-            gamePanel.superItems[i].collider.y = gamePanel.superItems[i].solidAreaDefaultY;
+
         }
         return index;
     }
