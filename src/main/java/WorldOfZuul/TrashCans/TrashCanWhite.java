@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class TrashCanWhite extends Item{
     public TrashCanWhite() {
-        super("White trash can", Item.ItemType.TRASHCAN);
+        super("White trash can for metal", Item.ItemType.TRASHCAN);
 
         try {
             image = ImageLoader.getInstance().Load("/TrashCan/TrashCanWhite.png", 40, 40);

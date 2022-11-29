@@ -5,17 +5,16 @@ import WorldOfZuul.Utility.ImageLoader;
 
 import java.io.IOException;
 
-public class TrashCanYellow extends Item {
-    public TrashCanYellow() {
-        super("Yellow trash can", ItemType.TRASHCAN);
+public class TrashCanLightBlue extends Item{
+    public TrashCanLightBlue() {
+        super("Light blue trash can for glass", Item.ItemType.TRASHCAN);
 
         try {
-            image = ImageLoader.getInstance().Load("/TrashCan/TrashCanYellow.png", 40, 40);
+            image = ImageLoader.getInstance().Load("/TrashCan/TrashCanLightBlue.png", 40, 40);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
         collision = true;
     }
-
 }
