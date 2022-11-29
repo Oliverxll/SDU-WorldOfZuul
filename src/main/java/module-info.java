@@ -3,4 +3,5 @@ module worldofzuul.sduworldofzuul {
 
     exports WorldOfZuul;
     exports WorldOfZuul.DataTypes;
+    exports WorldOfZuul.TrashCans;
 }

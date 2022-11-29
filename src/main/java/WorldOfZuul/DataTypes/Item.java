@@ -63,7 +63,6 @@ public class Item
 
     public enum ItemType
     {
-        TRASHCAN,
         PAPER,
         METAL,
         PLASTIC,

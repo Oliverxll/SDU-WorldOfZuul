@@ -30,8 +30,7 @@ public class Player extends Entity
         screenPos = new Position(gamePanel.screenWidth/2 - gamePanel.UNIT_SIZE/2,
                                  gamePanel.screenHeight/2 - gamePanel.UNIT_SIZE/2);
 
-        colliderAreaDefaultX = collider.x;
-        colliderAreaDefaultY = collider.y;
+
 
         setDefaultValues();
         getPlayerImage();
@@ -53,6 +52,9 @@ public class Player extends Entity
                                 gamePanel.worldHeight / 2 - gamePanel.UNIT_SIZE / 2);
 
         collider = new Rectangle(11, 22, gamePanel.UNIT_SIZE - 22, gamePanel.UNIT_SIZE - 22);
+
+        colliderAreaDefaultX = collider.x;
+        colliderAreaDefaultY = collider.y;
 
         moveSpeed = 4;
         direction = "down";
@@ -106,6 +108,9 @@ public class Player extends Entity
             int itemIndex = gamePanel.collisionChecker.checkItem(this,true);
             pickUpItem(itemIndex);
 
+            int trashIndex = gamePanel.collisionChecker.checkTrash(this,true);
+            removeTrash(trashIndex);
+
             if (!collision) {
                 switch (direction) {
                     case "up" -> position.y -= moveSpeed;
@@ -128,6 +133,31 @@ public class Player extends Entity
             }
         }
     }
+
+    private void removeTrash(int trashIndex)
+    {
+        if (trashIndex != 999) {
+            Item.ItemType itemType = gamePanel.trashCans[trashIndex].itemType;
+
+            for (int i = 0; i < gamePanel.player.inventory.count(); i++)
+            {
+                if (gamePanel.player.inventory.get(i).itemType == itemType)
+                {
+                    gamePanel.player.inventory.remove(gamePanel.player.inventory.get(i));
+
+                    if (gamePanel.player.inventory.count() == 0) {
+                        for (int j = 0; j < gamePanel.items.length; j++)
+                        {
+                            if (gamePanel.items[j] != null)
+                                return;
+                        }
+                        gamePanel.winCondition = true;
+                    }
+                }
+            }
+        }
+    }
+
     public void pickUpItem(int i){
         if (i != 999){
             Item.ItemType itemType = gamePanel.items[i].itemType;
@@ -139,9 +169,6 @@ public class Player extends Entity
                     gamePanel.items[i] = null;
                 }
             }
-
-            //TODO get it to display inventory
-            System.out.println("Inventory:" + inventory.getAll());
         }
     }
 

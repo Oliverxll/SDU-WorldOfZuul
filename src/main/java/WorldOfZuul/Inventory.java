@@ -22,6 +22,10 @@ public class Inventory
         innerList.remove(item);
     }
 
+    public Item get(int i) {
+        return innerList.get(i);
+    }
+
     public ArrayList<Item> getAll() {
         return innerList;
     }

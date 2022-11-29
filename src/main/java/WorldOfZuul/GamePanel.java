@@ -23,6 +23,8 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
     public final int worldWidth = maxWorldCol * UNIT_SIZE;
     public final int worldHeight = maxWorldRow * UNIT_SIZE;
 
+    public boolean winCondition = false;
+
     //FPS
     int FPS = 60;
 
@@ -37,6 +39,7 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
     public AssetSetter assetSetter = new AssetSetter(this);
     public Player player = new Player(this, keyHandler);
     public Item items[] = new Item[10];
+    public TrashCan[] trashCans = new TrashCan[10];
 
     //Constructor
     public GamePanel() {
@@ -117,8 +120,15 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
 
         //Objects
         for (int i = 0; i< items.length; i++){
-            if (items[i]!=null){
+            if (items[i] != null){
                 items[i].draw(g2,this);
+            }
+        }
+
+        for (int i = 0; i < trashCans.length; i++)
+        {
+            if (trashCans[i] != null) {
+                trashCans[i].draw(g2, this);
             }
         }
 

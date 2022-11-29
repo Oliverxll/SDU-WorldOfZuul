@@ -34,30 +34,24 @@ public class AssetSetter extends Item {
     }
 
     public void setTrashCan(){
-        gamePanel.items[5]= new TrashCanBlue();
-        gamePanel.items[5].position.x = 26 *gamePanel.UNIT_SIZE;
-        gamePanel.items[5].position.y = 5 * gamePanel.UNIT_SIZE;
+        gamePanel.trashCans[0] = new TrashCanBlue(gamePanel);
+        gamePanel.trashCans[0].position.x = 26 * gamePanel.UNIT_SIZE;
+        gamePanel.trashCans[0].position.y = 5 * gamePanel.UNIT_SIZE;
 
-        gamePanel.items[6]= new TrashCanGreen();
-        gamePanel.items[6].position.x = 26 *gamePanel.UNIT_SIZE;
-        gamePanel.items[6].position.y = 35 * gamePanel.UNIT_SIZE;
+        gamePanel.trashCans[1] = new TrashCanGreen(gamePanel);
+        gamePanel.trashCans[1].position.x = 26 * gamePanel.UNIT_SIZE;
+        gamePanel.trashCans[1].position.y = 35 * gamePanel.UNIT_SIZE;
 
-        gamePanel.items[7]= new TrashCanPink();
-        gamePanel.items[7].position.x = 29 *gamePanel.UNIT_SIZE;
-        gamePanel.items[7].position.y = 26 * gamePanel.UNIT_SIZE;
+        gamePanel.trashCans[2] = new TrashCanPink(gamePanel);
+        gamePanel.trashCans[2].position.x = 29 * gamePanel.UNIT_SIZE;
+        gamePanel.trashCans[2].position.y = 26 * gamePanel.UNIT_SIZE;
 
-        gamePanel.items[8]= new TrashCanLightBlue();
-        gamePanel.items[8].position.x = 18 *gamePanel.UNIT_SIZE;
-        gamePanel.items[8].position.y = 21 * gamePanel.UNIT_SIZE;
+        gamePanel.trashCans[3] = new TrashCanLightBlue(gamePanel);
+        gamePanel.trashCans[3].position.x = 18 * gamePanel.UNIT_SIZE;
+        gamePanel.trashCans[3].position.y = 21 * gamePanel.UNIT_SIZE;
 
-        gamePanel.items[9]= new TrashCanWhite();
-        gamePanel.items[9].position.x = 40 *gamePanel.UNIT_SIZE;
-        gamePanel.items[9].position.y = 21 * gamePanel.UNIT_SIZE;
-
-        gamePanel.items[9]= new TrashCanYellow();
-        gamePanel.items[9].position.x = 2 *gamePanel.UNIT_SIZE;
-        gamePanel.items[9].position.y = 21 * gamePanel.UNIT_SIZE;
-
-
+        gamePanel.trashCans[4] = new TrashCanWhite(gamePanel);
+        gamePanel.trashCans[4].position.x = 40 * gamePanel.UNIT_SIZE;
+        gamePanel.trashCans[4].position.y = 21 * gamePanel.UNIT_SIZE;
     }
 }

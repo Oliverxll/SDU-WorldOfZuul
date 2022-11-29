@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class Entity
 {
-    public Position position;
+    public Position position = new Position();
     public Rectangle collider = new Rectangle();
     public int colliderAreaDefaultX, colliderAreaDefaultY;
     public boolean collision = false;

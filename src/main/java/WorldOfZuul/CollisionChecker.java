@@ -54,6 +54,51 @@ public class CollisionChecker {
         }
     }
 
+    public int checkTrash(Entity entity, boolean player) {
+        int index = 999;
+        for (int i = 0; i < gamePanel.trashCans.length; i++) {
+
+            if (gamePanel.trashCans[i] != null) {
+                //Entity
+                entity.collider.x = entity.position.x + entity.collider.x;
+                entity.collider.y = entity.position.y + entity.collider.y;
+                //Object
+                gamePanel.trashCans[i].collider.x = gamePanel.trashCans[i].position.x + gamePanel.trashCans[i].collider.x;
+                gamePanel.trashCans[i].collider.y = gamePanel.trashCans[i].position.y + gamePanel.trashCans[i].collider.y;
+
+                switch (entity.direction)
+                {
+                    case "up" ->
+                    {
+                        entity.collider.y -= entity.moveSpeed;
+                        index = checkTrashCollision(entity, player, index, i);
+                    }
+                    case "down" ->
+                    {
+                        entity.collider.y += entity.moveSpeed;
+                        index = checkTrashCollision(entity, player, index, i);
+                    }
+                    case "left" ->
+                    {
+                        entity.collider.x -= entity.moveSpeed;
+                        index = checkTrashCollision(entity, player, index, i);
+                    }
+                    case "right" ->
+                    {
+                        entity.collider.x += entity.moveSpeed;
+                        index = checkTrashCollision(entity, player, index, i);
+                    }
+                }
+                entity.collider.x = entity.colliderAreaDefaultX;
+                entity.collider.y = entity.colliderAreaDefaultY;
+                gamePanel.trashCans[i].collider.x = gamePanel.trashCans[i].colliderAreaDefaultX;
+                gamePanel.trashCans[i].collider.y = gamePanel.trashCans[i].colliderAreaDefaultY;
+            }
+        }
+
+        return index;
+    }
+
     public int checkItem(Entity entity, boolean player) {
         int index = 999;
         for (int i = 0; i < gamePanel.items.length; i++) {
@@ -115,10 +160,27 @@ public class CollisionChecker {
         return index;
     }
 
+    private int checkTrashCollision(Entity entity, boolean player, int index, int i)
+    {
+        if (entity.collider.intersects(gamePanel.trashCans[i].collider))
+        {
+            System.out.println("checking for trash collision");
+            if (gamePanel.trashCans[i].collision)
+            {
+                entity.collision = true;
+            }
+            if (player)
+            {
+                index = i;
+            }
+        }
+        return index;
+    }
+
 
     private void checkCollision(Entity entity, int tile1, int tile2) {
-        if (gamePanel.tileManager.tiles[tile1].canCollide ||
-                gamePanel.tileManager.tiles[tile2].canCollide) {
+        if (gamePanel.tileManager.tiles[tile1].walkable ||
+                gamePanel.tileManager.tiles[tile2].walkable) {
             entity.collision = true;
         }
     }
