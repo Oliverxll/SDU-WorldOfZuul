@@ -6,7 +6,7 @@ import java.security.Key;
 
 public class KeyHandler implements KeyListener { // Keylistener receives keyboard events.
 
-    public boolean upPressed, downPressed, leftPressed, rightPressed;
+    public boolean upPressed, downPressed, leftPressed, rightPressed, showInventory;
 
     @Override
     public void keyTyped(KeyEvent e) { }
@@ -26,6 +26,9 @@ public class KeyHandler implements KeyListener { // Keylistener receives keyboar
 
         if (code == KeyEvent.VK_RIGHT || code == KeyEvent.VK_D)
             rightPressed = true;
+
+        if (code == KeyEvent.VK_I)
+            showInventory = !showInventory;
     }
 
     @Override
