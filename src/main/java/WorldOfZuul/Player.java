@@ -20,8 +20,6 @@ public class Player extends Entity
     private GamePanel gamePanel;
     private KeyHandler keyhandler;
 
-    int hasItem = 0;
-
     Inventory inventory = new Inventory();
 
     public Player(GamePanel gamePanel, KeyHandler keyhandler)

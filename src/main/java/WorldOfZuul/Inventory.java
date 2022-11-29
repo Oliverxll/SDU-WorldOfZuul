@@ -25,4 +25,8 @@ public class Inventory
     public ArrayList<Item> getAll() {
         return innerList;
     }
+
+    public int count() {
+        return innerList.size();
+    }
 }
