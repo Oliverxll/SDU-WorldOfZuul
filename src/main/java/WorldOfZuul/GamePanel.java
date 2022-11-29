@@ -48,6 +48,7 @@ public class GamePanel extends JPanel implements Runnable {// GamePanel is a sub
 
     public void setUpGame (){
         assetSetter.setObject();
+        assetSetter.setTrashCan();
     }
 
 
